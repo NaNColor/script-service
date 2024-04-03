@@ -5,7 +5,11 @@
 # first value is the number of open file descriptions (means files)
 # so read file and get first value
 
-with open('/proc/sys/fs/file-nr', 'r') as file:
-    number = file.read().rstrip().split()[0]
+def get_number_open_files():
+	with open('/proc/sys/fs/file-nr', 'r') as file:
+		number = file.read().rstrip().split()[0]
+		return number
 
-print(number)
+
+if __name__ == '__main__':
+	print(get_number_open_files())
